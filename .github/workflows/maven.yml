@@ -8,8 +8,15 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  workflow-dispatch:
 
 jobs:
+  test-flaky:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Flaky test
+
   build:
 
     runs-on: ubuntu-latest
