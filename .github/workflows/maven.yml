@@ -29,8 +29,10 @@ jobs:
     - name: Compilation and Installation
     #-DfailIfNoTests=false
       run: mvn clean install -DskipTests -pl swagger/swagger-generator/generator-core -am 
+    - name: Run ls
+      run: ls -a target
     - name: Test Usual
-      run: mvn -pl swagger/swagger-generator/generator-core clean test -Dtest=org.apache.servicecomb.swagger.generator.core.processor.annotation.SwaggerDefinitionProcessorTest#should_process_security_oauth2
+      run: mvn -e -pl swagger/swagger-generator/generator-core -Dtest=org.apache.servicecomb.swagger.generator.core.processor.annotation.SwaggerDefinitionProcessorTest#should_process_security_oauth2 test
 
   build:
     if: github.ref == 'refs/heads/master'
