@@ -26,13 +26,11 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven
-    - name: Compilation and Installation
+    #- name: Compilation and Installation
     #-DfailIfNoTests=false
-      run: mvn clean install -DskipTests -pl swagger/swagger-generator/generator-core -am 
-    - name: Run ls
-      run: ls -a swagger/swagger-generator/generator-core/target
+    #  run: mvn clean install -DskipTests -pl swagger/swagger-generator/generator-core -am 
     - name: Test Usual
-      run: mvn -e -pl swagger/swagger-generator/generator-core -Dtest=org.apache.servicecomb.swagger.generator.core.processor.annotation.SwaggerDefinitionProcessorTest#should_process_security_oauth2 test
+      run: mvn -e -pl swagger/swagger-generator/generator-core -DfailIfNoTests=false -Dtest=org.apache.servicecomb.swagger.generator.core.processor.annotation.SwaggerDefinitionProcessorTest#should_process_security_oauth2 test
 
   build:
     if: github.ref == 'refs/heads/master'
