@@ -30,7 +30,7 @@ jobs:
     #-DfailIfNoTests=false
     #  run: mvn -e clean install -pl -DskipTests swagger/swagger-generator/generator-core -am 
     - name: Test Usual
-      run: mvn -pl swagger/swagger-generator/generator-core -B test -Dtest=org.apache.servicecomb.swagger.generator.core.processor.annotation.SwaggerDefinitionProcessorTest#should_process_security_oauth2
+      run: mvn --update-snapshots -pl swagger/swagger-generator/generator-core -B test -Dtest=org.apache.servicecomb.swagger.generator.core.processor.annotation.SwaggerDefinitionProcessorTest#should_process_security_oauth2
 
   build:
     if: github.ref == 'refs/heads/master'
