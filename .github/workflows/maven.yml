@@ -11,12 +11,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  test-flaky:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Flaky test
-
   build:
 
     runs-on: ubuntu-latest
