@@ -12,7 +12,7 @@ on:
 
 jobs:
   swagger-generator-core-usual-test-oauth2:
-    if: github.ref == 'refs/heads/test-flaky'
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -30,7 +30,7 @@ jobs:
       run: mvn clean install -DfailIfNoTests=false -pl swagger/swagger-generator/generator-core -Dtest=org.apache.servicecomb.swagger.generator.core.processor.annotation.SwaggerDefinitionProcessorTest#should_process_security_oauth2 -am
 
   swagger-generator-core-flaky-test-oauth2-nondex:
-    if: github.ref == 'refs/heads/test-flaky'
+    if: github.ref == 'refs/heads/master'
     needs: swagger-generator-core-usual-test-oauth2
     runs-on: ubuntu-latest
     steps:
