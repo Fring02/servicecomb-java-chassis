@@ -20,17 +20,11 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - uses: actions/cache@v1
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven
     #- name: Compilation and Installation
     #-DfailIfNoTests=false
     #  run: mvn -e clean install -pl -DskipTests swagger/swagger-generator/generator-core -am 
     - name: Test Usual
-      run: mvn --update-snapshots -pl swagger/swagger-generator/generator-core -B test -Dtest=org.apache.servicecomb.swagger.generator.core.processor.annotation.SwaggerDefinitionProcessorTest#should_process_security_oauth2
+      run: mvn -pl swagger/swagger-generator/generator-core -B test -Dtest=org.apache.servicecomb.swagger.generator.core.processor.annotation.SwaggerDefinitionProcessorTest#should_process_security_oauth2
 
   build:
     if: github.ref == 'refs/heads/master'
