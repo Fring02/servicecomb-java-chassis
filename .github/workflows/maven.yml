@@ -27,7 +27,10 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven
     - name: Compilation and Installation, Usual Test
-      run: mvn clean install -Dsurefire.failIfNoSpecifiedTests=false -pl swagger/swagger-generator/generator-core -Dtest=org.apache.servicecomb.swagger.generator.core.processor.annotation.SwaggerDefinitionProcessorTest#should_process_security_oauth2 -am
+      #run: mvn clean install -Dsurefire.failIfNoSpecifiedTests=false -pl swagger/swagger-generator/generator-core -Dtest=org.apache.servicecomb.swagger.generator.core.processor.annotation.SwaggerDefinitionProcessorTest#should_process_security_oauth2 -am
+      run: mvn clean install -DskipTests -pl swagger/swagger-generator/generator-core -am
+    - name: Test
+      run: mvn -pl swagger/swagger-generator/generator-core test -Dtest=org.apache.servicecomb.swagger.generator.core.processor.annotation.SwaggerDefinitionProcessorTest#should_process_security_oauth2
 
   swagger-generator-core-flaky-test-oauth2-nondex:
     if: github.ref == 'refs/heads/master'
